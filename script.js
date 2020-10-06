@@ -59,16 +59,32 @@ window.onload = function () {
 
   // Show lives
   comments = function () {
-    showLives.innerHTML = "Il vous reste " + lives + " essaies";
+    showLives.innerHTML = "Il vous reste " + lives + " essaie(s)";
+    
     if (lives < 1) {
-      showLives.innerHTML = "Fin ! Aucun bonus";
+      showLives.innerHTML = "Aucun bonus";
+      $("#fail").modal({
+        escapeClose: true,
+        clickClose: true,
+        showClose: false,
+        fadeDuration: 750
+      });
     }
-    for (var i = 0; i < geusses.length; i++) {
-      if (counter + space === geusses.length) {
-        showLives.innerHTML = "Fin! Vous gagnez un bonus!";
+    else {
+      for (var i = 0; i < geusses.length; i++) {
+        if (counter + space === geusses.length) {
+          showLives.innerHTML = "Vous gagnez un bonus!";
+          $("#success").modal({
+            escapeClose: true,
+            clickClose: true,
+            showClose: false,
+            fadeDuration: 750
+          });
+        }
       }
     }
   };
+
 
   // Animate man
   var animate = function () {
@@ -179,7 +195,7 @@ window.onload = function () {
         "honnetete",
         "transparence",
         "communication",
-        "esprit-d-equipe",
+        "unite",
         "autonomie"
     ];
 
